@@ -13,3 +13,28 @@ a {
 * {
   box-sizing: border-box;
 }
+button.slick-arrow.slick-prev {
+  display: none!important;
+}
+.product-left {
+  margin-right: 27px;
+}
+img.product-img {
+  border-radius: 11px!important;
+}
+
+.slick-prev:before, .slick-next:before {
+  font-size: 51px!important;
+}
+.slick-next:before {
+  content: url(https://i.ibb.co/Mn5m1vz/tick.png)!important;
+  /* background: url(https://i.ibb.co/Mn5m1vz/tick.png)!important; */
+}
+.slick-next {
+  right: -64px!important;
+}
+@media (max-width: 449px) {
+  .slick-next {
+    right: -46px!important;
+}
+}

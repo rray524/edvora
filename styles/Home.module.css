@@ -1,5 +1,22 @@
 .container {
   padding: 0 2rem;
+  background: #292929;
+}
+
+.sliderMain{
+  background: #131313;
+  border-radius: 15px;
+  padding: 38px;
+}
+.sliderSingleProduct {
+  background: #232323;
+  border-radius: 4.68775px;
+  padding: 16px;
+  margin: 9px;
+  height: 255px;
+}
+.sliderContainer {
+  display: flex;
 }
 
 .main {
@@ -113,4 +130,18 @@
     width: 100%;
     flex-direction: column;
   }
+}
+@media (max-width: 449px) {
+  .sliderContainer {
+    flex-wrap: wrap;
+  }
+  .sliderSingleProduct{
+    height: auto;
+  }
+  .sliderMain{
+    padding: 11px;
+  }
+  .slick-next {
+    right: -46px!important;
+}
 }

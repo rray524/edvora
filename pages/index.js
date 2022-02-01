@@ -7,7 +7,7 @@ import Product from '../components/Product';
 import styles from '../styles/Home.module.css'
 
 export default function Home({ products }) {
-  const [allData, setData] = useState(products);
+  const [allData, setAllData] = useState(products);
   // console.log(allData);
   const generateProductDataForDrop = () => {
     return [...new Set(products.map(product => product.product_name))]
@@ -133,7 +133,8 @@ export default function Home({ products }) {
       }
     });
     // console.log(filteredData);
-    setData(filteredData);
+    setAllData(filteredData);
+    console.log(allData);
   };
   // state filter
   const handleFilterState = (state) => {
@@ -144,7 +145,8 @@ export default function Home({ products }) {
       }
     });
     // console.log(filteredData);
-    setData(filteredData);
+    setAllData(filteredData);
+    console.log(allData);
   };
   // city filter
   const handleFilterCity = (city) => {
@@ -155,7 +157,9 @@ export default function Home({ products }) {
       }
     });
     // console.log(filteredData);
-    setData(filteredData);
+    setAllData(filteredData);
+    console.log(allData);
+
   };
   return (
     <div className={styles.container}>

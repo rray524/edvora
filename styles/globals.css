@@ -33,6 +33,14 @@ img.product-img {
 .slick-next {
   right: -64px!important;
 }
+button#dropdown-basic {
+  background: #232323;
+  border-radius: 4.68775px;
+  border: none;
+  padding: 13px 30px;
+  margin: 6px;
+  width: 90%;
+}
 @media (max-width: 449px) {
   .slick-next {
     right: -46px!important;

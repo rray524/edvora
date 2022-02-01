@@ -1,16 +1,29 @@
 import Head from 'next/head'
+import { useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap'
 import Slider from 'react-slick';
+import Dropdowns from '../components/Dropdowns';
 import Product from '../components/Product';
 import styles from '../styles/Home.module.css'
 
 export default function Home({ products }) {
+  const [allData, setData] = useState(products);
+  // console.log(allData);
+  const generateProductDataForDrop = () => {
+    return [...new Set(products.map(product => product.product_name))]
+  }
+  const generateStateDataForDrop = () => {
+    return [...new Set(products.map(state => state.address.state))]
+  }
+  const generateCityDataForDrop = () => {
+    return [...new Set(products.map(city => city.address.city))]
+  }
   const settings = {
     dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 4,
-    slidesToScroll: 4,
+    slidesToScroll: 1,
     initialSlide: 0,
     responsive: [
       {
@@ -63,7 +76,7 @@ export default function Home({ products }) {
     infinite: true,
     speed: 500,
     slidesToShow: 4,
-    slidesToScroll: 4,
+    slidesToScroll: 1,
     initialSlide: 5,
     responsive: [
       {
@@ -111,6 +124,39 @@ export default function Home({ products }) {
       }
     ]
   };
+  // product filter
+  const handleFilterProduct = (product) => {
+    const filteredData = products.filter((item) => {
+      // console.log(item);
+      if (item.product_name === product) {
+        return item;
+      }
+    });
+    // console.log(filteredData);
+    setData(filteredData);
+  };
+  // state filter
+  const handleFilterState = (state) => {
+    const filteredData = products.filter((item) => {
+      // console.log(item);
+      if (item.address.state === state) {
+        return item;
+      }
+    });
+    // console.log(filteredData);
+    setData(filteredData);
+  };
+  // city filter
+  const handleFilterCity = (city) => {
+    const filteredData = products.filter((item) => {
+      // console.log(item);
+      if (item.address.city === city) {
+        return item;
+      }
+    });
+    // console.log(filteredData);
+    setData(filteredData);
+  };
   return (
     <div className={styles.container}>
       <Head>
@@ -125,7 +171,13 @@ export default function Home({ products }) {
         {/* Stack the columns on mobile by making one full-width and the other half-width */}
         <Row>
           <Col xs={12} md={2}>
-            xs=12 md=8
+            <div className={styles.dropDown}>
+              <h3 style={{ color: 'white' }}>Filters</h3>
+              <hr style={{ border: "2px solid #eaeaea" }} />
+              <br />
+              <Dropdowns products={generateProductDataForDrop()} states={generateStateDataForDrop()} cities={generateCityDataForDrop()} onProductFilter={handleFilterProduct} onStateFilter={handleFilterState} onCityFilter={handleFilterCity} />
+            </div>
+            <br /><br />
           </Col>
           <Col xs={12} md={10}>
             <h1 style={{ color: 'white' }}>Edvora</h1><br />
@@ -136,7 +188,7 @@ export default function Home({ products }) {
             <div className={styles.sliderMain}>
               <Slider {...settings}>
                 {
-                  products?.map((product, idx) => (
+                  allData?.map((product, idx) => (
                     <Product key={idx} product={product} />
 
                   ))
@@ -152,7 +204,7 @@ export default function Home({ products }) {
             <div className={styles.sliderMain}>
               <Slider {...setting}>
                 {
-                  products?.map((product, idx) => (
+                  allData?.map((product, idx) => (
                     <Product key={idx} product={product} />
 
                   ))

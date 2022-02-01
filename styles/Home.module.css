@@ -18,7 +18,11 @@
 .sliderContainer {
   display: flex;
 }
-
+.dropDown{
+  background: #131313;
+  border-radius: 15px;
+  padding: 23px;
+}
 .main {
   min-height: 100vh;
   padding: 4rem 0;
